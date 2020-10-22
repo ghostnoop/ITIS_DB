@@ -1,0 +1,17 @@
+CREATE TABLE `students` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT NULL,
+  `group_id` INT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_students_1_idx` (`user_id` ASC) VISIBLE,
+  INDEX `fk_students_2_idx` (`group_id` ASC) VISIBLE,
+  CONSTRAINT `fk_students_1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_students_2`
+    FOREIGN KEY (`group_id`)
+    REFERENCES `groups` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
